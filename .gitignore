@@ -1,0 +1,10 @@
+node_modules/
+database.sqlite
+votes.json
+*.bat
+*.vbs
+*.docx
+*.pptx
+~$*
+.package-lock.json
+index_archivos/
