@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const result = await response.json();
             if (result.success) {
                 alert('¡Registro completado con éxito! Ahora puedes iniciar sesión.');
-                window.location.href = '/login';
+                window.location.href = '/login.html';
             } else {
                 alert('Error: ' + result.error);
             }
