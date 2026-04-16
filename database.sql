@@ -1,31 +1,40 @@
--- 1. Tabla de Encuestas (Título y descripción)
-CREATE TABLE IF NOT EXISTS encuestas (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    titulo TEXT NOT NULL,
-    descripcion TEXT,
-    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP
+-- Crear la base de datos
+CREATE DATABASE IF NOT EXISTS vecatsof_db;
+USE vecatsof_db;
+
+-- Tabla de Clientes
+CREATE TABLE IF NOT EXISTS clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    telefono VARCHAR(20),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- 2. Tabla de Opciones (Las respuestas posibles para cada encuesta)
-CREATE TABLE IF NOT EXISTS opciones (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    encuesta_id INTEGER NOT NULL,
-    texto_opcion TEXT NOT NULL,
-    FOREIGN KEY (encuesta_id) REFERENCES encuestas (id) ON DELETE CASCADE
+-- Tabla de Direcciones
+CREATE TABLE IF NOT EXISTS direcciones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id INT NOT NULL,
+    calle VARCHAR(255) NOT NULL,
+    ciudad VARCHAR(100) NOT NULL,
+    codigo_postal VARCHAR(10) NOT NULL,
+    provincia VARCHAR(100) NOT NULL,
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id) ON DELETE CASCADE
 );
 
--- 3. Tabla de Votos (Registro de cada votación)
-CREATE TABLE IF NOT EXISTS votos (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    opcion_id INTEGER NOT NULL,
-    ip_usuario TEXT NOT NULL, -- Para control de spam/duplicate con express-rate-limit
-    fecha_voto DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (opcion_id) REFERENCES opciones (id) ON DELETE CASCADE
+-- Tabla de Preguntas (opcional, integrada)
+CREATE TABLE IF NOT EXISTS questions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pregunta TEXT NOT NULL,
+    opcion1 VARCHAR(255) NOT NULL,
+    opcion2 VARCHAR(255) NOT NULL,
+    votos1 INT DEFAULT 0,
+    votos2 INT DEFAULT 0
 );
 
--- Ejemplo de inserción de datos para probar:
-INSERT INTO encuestas (titulo, descripcion) VALUES ('¿Cuál es tu lenguaje favorito?', 'Encuesta de nivel para el curso');
-
-INSERT INTO opciones (encuesta_id, texto_opcion) VALUES (1, 'JavaScript');
-INSERT INTO opciones (encuesta_id, texto_opcion) VALUES (1, 'Python');
-INSERT INTO opciones (encuesta_id, texto_opcion) VALUES (1, 'Java');
+-- Insertar algunas preguntas iniciales
+INSERT INTO questions (pregunta, opcion1, opcion2) VALUES 
+('¿Prefieres trabajar desde casa o en la oficina?', 'Casa', 'Oficina'),
+('¿Qué prefieres: Té o Café?', 'Té', 'Café'),
+('¿JavaScript o TypeScript?', 'JavaScript', 'TypeScript');

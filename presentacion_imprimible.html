@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Técnica Master - Vecatsof PDF</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff6b81;
+            --secondary: #ffa502;
+            --bg: #0f0c29;
+            --text: #ffffff;
+        }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+        }
+
+        .slide {
+            width: 100vw; height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+            padding: 40px; box-sizing: border-box;
+            page-break-after: always;
+            position: relative;
+            background: radial-gradient(circle at 10% 10%, rgba(255, 107, 129, 0.1) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 90%, rgba(255, 165, 2, 0.1) 0%, transparent 40%);
+        }
+
+        .content {
+            max-width: 1100px; width: 100%;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 50px; align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 50px; border-radius: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+        }
+
+        img { width: 100%; border-radius: 20px; box-shadow: 0 15px 45px rgba(0,0,0,0.5); }
+
+        h2 {
+            font-size: 2.8rem; margin: 0 0 20px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        p { font-size: 1.2rem; line-height: 1.7; color: rgba(255,255,255,0.9); }
+
+        .tag {
+            display: inline-block; background: var(--primary);
+            padding: 5px 20px; border-radius: 25px;
+            font-weight: 800; font-size: 0.8rem; margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .tech-icons { margin-top: 20px; display: flex; gap: 10px; }
+        .tech-icon { padding: 4px 12px; border: 1px solid var(--secondary); border-radius: 8px; font-size: 0.75rem; color: var(--secondary); font-weight: bold; }
+
+        @media print {
+            body { background: #0f0c29 !important; -webkit-print-color-adjust: exact; }
+            .slide { height: 100vh; width: 100vw; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1 -->
+    <div class="slide">
+        <div class="content">
+            <img src="C:/Users/UsuarioM/.gemini/antigravity/brain/61be07ab-b3be-472c-a41f-068b53e4f11a/vecatsof_step1_initiation_1776326196558.png">
+            <div>
+                <div class="tag">FASE 1: CONCEPTO</div>
+                <h2>Génesis de Vecatsof</h2>
+                <p>Nace de la necesidad de fusionar un diseño visual disruptivo con una ingeniería de datos atómica. Una solución Full-Stack pensada para el futuro del registro digital.</p>
+                <div class="tech-icons">
+                    <span class="tech-icon">NODE.JS</span>
+                    <span class="tech-icon">SCALABILITY</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+        <div class="content">
+            <img src="C:/Users/UsuarioM/.gemini/antigravity/brain/61be07ab-b3be-472c-a41f-068b53e4f11a/vecatsof_architecture_diagram_1776325316680.png">
+            <div>
+                <div class="tag">TECNOLOGÍA: BACKEND</div>
+                <h2>Potencia con Express</h2>
+                <p>Uso de un servidor asíncrono para gestionar peticiones API JSON en tiempo real. Máximo rendimiento con el consumo de recursos más bajo.</p>
+                <div class="tech-icons">
+                    <span class="tech-icon">EXPRESS</span>
+                    <span class="tech-icon">REST API</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+        <div class="content">
+            <img src="C:/Users/UsuarioM/.gemini/antigravity/brain/61be07ab-b3be-472c-a41f-068b53e4f11a/vecatsof_step2_backend_mysql_1776326325184.png">
+            <div>
+                <div class="tag">DATOS: MYSQL</div>
+                <h2>Transacciones ACID</h2>
+                <p>Utilizamos el motor InnoDB para asegurar que cada registro de cliente y dirección sea íntegro. Seguridad de datos a nivel bancario.</p>
+                <div class="tech-icons">
+                    <span class="tech-icon">InnoDB</span>
+                    <span class="tech-icon">TRANSACTIONS</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+        <div class="content">
+            <img src="C:/Users/UsuarioM/.gemini/antigravity/brain/61be07ab-b3be-472c-a41f-068b53e4f11a/vecatsof_registration_mockup_1776325294116.png">
+            <div>
+                <div class="tag">DISEÑO: UI/UX</div>
+                <h2>Neo-Glassmorphism</h2>
+                <p>Diseño premium basado en transparencias y neón. Flujo de registro en pasos optimizado para aumentar la conversión del usuario.</p>
+                <div class="tech-icons">
+                    <span class="tech-icon">GLASSMORPHISM</span>
+                    <span class="tech-icon">RESPONSIVE</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide">
+        <div class="content">
+            <img src="C:/Users/UsuarioM/.gemini/antigravity/brain/61be07ab-b3be-472c-a41f-068b53e4f11a/vecatsof_step4_typescript_logic_1776326460027.png">
+            <div>
+                <div class="tag">INGENIERÍA: TYPESCRIPT</div>
+                <h2>Código Libre de Errores</h2>
+                <p>Capacitación del frontend mediante tipado estricto. Transpilación segura de ES6 que garantiza estabilidad en cualquier navegador moderno.</p>
+                <div class="tech-icons">
+                    <span class="tech-icon">TSC</span>
+                    <span class="tech-icon">ES6+</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="slide">
+        <div class="content" style="grid-template-columns: 1fr; text-align: center;">
+            <div>
+                <div class="tag">ESTADO: COMPLETO</div>
+                <h2>Conclusiones y Roadmap</h2>
+                <p>Vecatsof es un ecosistema escalable. Siguientes hitos: Implementación de JWT para sesiones seguras y encriptación de passwords con Bcrypt para producción.</p>
+                <p><strong>PROYECTO LISTO PARA DESPLIEGUE.</strong></p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

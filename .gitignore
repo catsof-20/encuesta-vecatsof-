@@ -1,10 +1,6 @@
-node_modules/
-database.sqlite
-votes.json
-*.bat
-*.vbs
-*.docx
-*.pptx
-~$*
-.package-lock.json
-index_archivos/
+node_modules
+.env
+dist
+.DS_Store
+*.zip
+*.log
