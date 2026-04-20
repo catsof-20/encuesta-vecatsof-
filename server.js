@@ -191,8 +191,8 @@ app.post('/api/login', async (req, res) => {
 // ──────────────────────────────────────────────────────────
 app.get('/api/questions', async (req, res) => {
   try {
-    // Retornamos 6 preguntas al azar para que el test sea dinámico
-    const randomSql = dbType === 'postgres' ? 'SELECT * FROM questions ORDER BY RANDOM() LIMIT 6' : 'SELECT * FROM questions ORDER BY RANDOM() LIMIT 6';
+    // Retornamos 10 preguntas al azar para que el test sea dinámico
+    const randomSql = dbType === 'postgres' ? 'SELECT * FROM questions ORDER BY RANDOM() LIMIT 10' : 'SELECT * FROM questions ORDER BY RANDOM() LIMIT 10';
     const result = await runQuery(randomSql);
     const formattedQuestions = result.rows.map(row => ({
        id: row.id,
