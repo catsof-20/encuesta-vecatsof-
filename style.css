@@ -665,3 +665,31 @@ body.effect-2 .background-animation {
         padding: 30px 20px;
     }
 }
+
+/* Estilos de Imagen de Resultados */
+.result-image-container {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border: 3px solid rgba(255,255,255,0.4);
+    animation: zoomInImage 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.result-profile-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.result-profile-img:hover {
+    transform: scale(1.05);
+}
+
+@keyframes zoomInImage {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}

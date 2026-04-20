@@ -8,9 +8,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     let currentQuestionIndex = 0;
 
     const profiles = [
-        { title: "ALMA AVENTURERA Y ENERGÉTICA 🚀", desc: "Eres el alma de la fiesta y un espíritu inquieto. Buscas constantemente el movimiento, la novedad y rodearte de personas. ¡Allí donde vayas llevas la luz de la alegría y te adaptas fácilmente al cambio!" },
-        { title: "ALMA CREATIVA Y BOHEMIA 🎨", desc: "Observas el mundo de manera distinta. Valoras el arte, los pequeños detalles, evitas la rutina cuadrada y te dejas llevar por tus grandes emociones. Tienes una sensibilidad especial que te hace único/a." },
-        { title: "ALMA SERENA Y ANALÍTICA ☕", desc: "Eres la voz de la sensatez. Valoras profundamente la calma, tu tiempo sagrado a solas y los ambientes cálidos. Piensas con prudencia y encuentras el punto lógico y racional en un mundo cada vez más ruidoso." }
+        { 
+            title: "ALMA AVENTURERA Y ENERGÉTICA 🚀", 
+            desc: "Eres el alma de la fiesta y un espíritu inquieto. Buscas constantemente el movimiento, la novedad y rodearte de personas. ¡Allí donde vayas llevas la luz de la alegría y te adaptas fácilmente al cambio!",
+            img: "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&q=80&w=800"
+        },
+        { 
+            title: "ALMA CREATIVA Y BOHEMIA 🎨", 
+            desc: "Observas el mundo de manera distinta. Valoras el arte, los pequeños detalles, evitas la rutina cuadrada y te dejas llevar por tus grandes emociones. Tienes una sensibilidad especial que te hace único/a.",
+            img: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=800"
+        },
+        { 
+            title: "ALMA SERENA Y ANALÍTICA ☕", 
+            desc: "Eres la voz de la sensatez. Valoras profundamente la calma, tu tiempo sagrado a solas y los ambientes cálidos. Pias con prudencia y encuentras el punto lógico y racional en un mundo cada vez más ruidoso.",
+            img: "https://images.unsplash.com/photo-1518005020250-675921029d8e?auto=format&fit=crop&q=80&w=800"
+        }
     ];
 
     const welcomeSection = document.getElementById('welcome-section');
@@ -193,9 +205,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.body.classList.add(`effect-${maxIndex}`);
         
         personalityResultSection.innerHTML = `
-            <h2 style="color: #000; font-style: italic;">SEGÚN TUS OPINIONES ERES UN...</h2>
-            <h1 style="color: #ff0f7b; font-size: 2.2rem; margin: 20px 0; line-height: 1.2;">${profiles[maxIndex].title}</h1>
-            <p style="font-size: 1.15rem; color: #000; font-style: italic; font-weight: 600; line-height: 1.6; padding: 0 10px; margin-bottom: 30px;">${profiles[maxIndex].desc}</p>
+            <div class="result-image-container">
+                <img src="${profiles[maxIndex].img}" alt="${profiles[maxIndex].title}" class="result-profile-img">
+            </div>
+            <h2 style="color: #000; font-style: italic; margin-top: 20px;">SEGÚN TUS OPINIONES ERES UN...</h2>
+            <h1 style="color: #ff0f7b; font-size: 2.2rem; margin: 15px 0; line-height: 1.2;">${profiles[maxIndex].title}</h1>
+            <p style="font-size: 1.15rem; color: #333; font-style: italic; font-weight: 600; line-height: 1.6; padding: 0 10px; margin-bottom: 30px;">${profiles[maxIndex].desc}</p>
             <button type="button" class="submit-btn active" id="show-details-btn" style="width: 100%; justify-content: center; background: linear-gradient(135deg, #00d2ff 0%, #0abde3 100%); font-size: 1.1rem; padding: 18px;">Ver Resultados y Sugerencias <span class="arrow">→</span></button>
         `;
 
