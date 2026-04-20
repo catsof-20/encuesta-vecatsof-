@@ -497,18 +497,29 @@ const maxIndex = counts.indexOf(Math.max(...counts));
             </div>
         </section>
 
-        <!-- SLIDE 12: CONCLUSIÓN Y ESTADO FINAL -->
+        <!-- SLIDE 12: CONCLUSIÓN -->
         <section class="slide">
-            <div class="content-card" style="text-align: center; justify-content: center; background: linear-gradient(135deg, #0f172a 0%, #00d2ff1a 100%);">
-                <div class="info-area" style="align-items: center;">
+            <div class="content-card">
+                <div class="info-area">
                     <div class="label">Ready for Production</div>
                     <h1>Vecatsof v2.1<br>Finalizado</h1>
                     <p>Un sistema robusto, sin fricción y visualmente impactante listo para despliegue global.</p>
-                    <div style="display: flex; gap: 15px; margin-top: 40px;">
-                        <span class="tag-pill" style="border: 1px solid var(--primary);">Node.js</span>
-                        <span class="tag-pill" style="border: 1px solid var(--primary);">Express</span>
-                        <span class="tag-pill" style="border: 1px solid var(--primary);">Supabase</span>
-                        <span class="tag-pill" style="border: 1px solid var(--primary);">PostgreSQL</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 13: AUTOMATIZACIÓN LOCAL (VBS) -->
+        <section class="slide">
+            <div class="content-card">
+                <div class="info-area">
+                    <div class="label">Paso 13: Herramientas Auxiliares</div>
+                    <h2>¿Qué es VBS?</h2>
+                    <p>Implementamos un sistema de scripts auxiliares para mejorar la experiencia de desarrollo en Windows.</p>
+                    <div class="check-item"><span>⚙️ <b>iniciar.vbs:</b> Permite lanzar el servidor en segundo plano (sin consola).</span></div>
+                    <div class="check-item"><span>🚀 <b>iniciar.bat:</b> Orquestador de la aplicación local.</span></div>
+                    <div class="code-box">
+CreateObject("Wscript.Shell").Run "iniciar.bat", 0, True
+// Lógica VBS para ejecución silenciosa
                     </div>
                 </div>
             </div>
@@ -525,7 +536,7 @@ const maxIndex = counts.indexOf(Math.max(...counts));
 
     <script>
         let current = 0;
-        const total = 12;
+        const total = 13;
         const slider = document.getElementById('slider');
         const dotsContainer = document.getElementById('dots');
 
