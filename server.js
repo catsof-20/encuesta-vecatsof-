@@ -99,7 +99,6 @@ async function initDB() {
 
   if (count === 0) {
     console.log('📦 Inicializando preguntas por defecto...');
-    const defaultQuestions = [
       { q: '¿Qué color te atrae más instintivamente?', opts: ['Rojo o Naranja (Energía y Acción)', 'Amarillo o Púrpura (Creatividad e Imaginación)', 'Azul o Verde (Paz y Análisis)'], v: [0, 0, 0] },
       { q: '¿Cómo prefieres pasar tus fines de semana?', opts: ['Explorando nuevos lugares y aventuras', 'Dedicando tiempo a un hobby creativo o arte', 'Disfrutando de la tranquilidad y el silencio'], v: [0, 0, 0] },
       { q: 'Si tu personalidad fuera una estación, ¿cuál sería?', opts: ['Verano (Intenso y brillante)', 'Primavera (Renacimiento y color)', 'Otoño o Invierno (Profundo y reflexivo)'], v: [0, 0, 0] },
@@ -107,7 +106,15 @@ async function initDB() {
       { q: '¿Qué buscas principalmente en un nuevo proyecto?', opts: ['Resultados rápidos e impacto inmediato', 'Originalidad y libertad de expresión', 'Estabilidad y un plan bien estructurado'], v: [0, 0, 0] },
       { q: '¿Cómo te expresas mejor ante los demás?', opts: ['A través de mis acciones y liderazgo', 'A través de mi estilo y mis ideas únicas', 'A través de mis palabras y mi escucha atenta'], v: [0, 0, 0] },
       { q: '¿Qué tipo de decoración prefieres en tu hogar?', opts: ['Vibrante, con muchos contrastes y energía', 'Ecléctica, con objetos con alma e historia', 'Minimalista, con tonos neutros y orden'], v: [0, 0, 0] },
-      { q: '¿Cuál de estos elementos te define mejor?', opts: ['Fuego (Transformador y potente)', 'Aire (Libre y siempre en movimiento)', 'Tierra o Agua (Sólido y profundo)'], v: [0, 0, 0] }
+      { q: '¿Cuál de estos elementos te define mejor?', opts: ['Fuego (Transformador y potente)', 'Aire (Libre y siempre en movimiento)', 'Tierra o Agua (Sólido y profundo)'], v: [0, 0, 0] },
+      { q: '¿Qué tipo de viaje prefieres?', opts: ['Aventura extrema y adrenalina', 'Cultura, museos y arte local', 'Retiro espiritual en la naturaleza'], v: [0, 0, 0] },
+      { q: '¿Cómo resuelves un problema difícil?', opts: ['Actúo rápido y decido sobre la marcha', 'Busco una solución creativa y original', 'Analizo todos los datos antes de decidir'], v: [0, 0, 0] },
+      { q: '¿Qué tipo de música te recarga?', opts: ['Rock, pop o ritmos intensos', 'Indie, alternativa o electrónica', 'Clásica, ambiental o sonidos de la naturaleza'], v: [0, 0, 0] },
+      { q: '¿Cómo es tu espacio de trabajo ideal?', opts: ['Dinámico, con gente y muchas pantallas', 'Inspirador, con arte y un toque caótico', 'Ordenado, minimalista y muy silencioso'], v: [0, 0, 0] },
+      { q: '¿Qué buscas en un regalo para alguien especial?', opts: ['Una experiencia emocionante o sorpresa', 'Algo único, artesanal o simbólico', 'Algo práctico, duradero y de calidad'], v: [0, 0, 0] },
+      { q: '¿Cuál es tu reacción ante los imprevistos?', opts: ['Los veo como un reto y me activo', 'Me adapto con una idea ingeniosa', 'Mantengo la calma y busco la lógica'], v: [0, 0, 0] },
+      { q: '¿Qué animal te representa mejor?', opts: ['León o Águila (Liderazgo y fuerza)', 'Delfín o Mariposa (Libertad y juego)', 'Búho o Lobo (Sabiduría y lealtad)'], v: [0, 0, 0] },
+      { q: '¿Cómo prefieres ser recordado?', opts: ['Por mis grandes logros y valentía', 'Por mi originalidad y visión del mundo', 'Por mi integridad y sabios consejos'], v: [0, 0, 0] }
     ];
 
     for (const q of defaultQuestions) {
@@ -184,7 +191,9 @@ app.post('/api/login', async (req, res) => {
 // ──────────────────────────────────────────────────────────
 app.get('/api/questions', async (req, res) => {
   try {
-    const result = await runQuery('SELECT * FROM questions');
+    // Retornamos 6 preguntas al azar para que el test sea dinámico
+    const randomSql = dbType === 'postgres' ? 'SELECT * FROM questions ORDER BY RANDOM() LIMIT 6' : 'SELECT * FROM questions ORDER BY RANDOM() LIMIT 6';
+    const result = await runQuery(randomSql);
     const formattedQuestions = result.rows.map(row => ({
        id: row.id,
        q: row.pregunta,
