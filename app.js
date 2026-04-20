@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         `;
 
         document.getElementById('show-details-btn').addEventListener('click', () => {
-            resultsSection.classList.add('hidden');
+            personalityResultSection.classList.add('hidden');
             detailedResultsSection.classList.remove('hidden');
             
             detailedResultsSection.style.opacity = '0';

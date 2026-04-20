@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vecatsof: Crónica de una Evolución Técnica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff4757;
+            --secondary: #ffa502;
+            --accent: #2e86de;
+            --bg: #f5f6fa;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --glass: rgba(0, 0, 0, 0.05);
+            --text: #2f3542;
+            --text-muted: #57606f;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .mesh-gradient {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(at 0% 0%, hsla(339,100%,88%,0.5) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,100%,88%,0.5) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(125,100%,88%,0.5) 0, transparent 50%), 
+                radial-gradient(at 0% 100%, hsla(339,100%,88%,0.5) 0, transparent 50%), 
+                radial-gradient(at 50% 100%, hsla(225,100%,88%,0.5) 0, transparent 50%), 
+                radial-gradient(at 100% 100%, hsla(275,100%,88%,0.5) 0, transparent 50%);
+            z-index: -1;
+            animation: pulseBg 10s infinite alternate linear;
+        }
+
+        @keyframes pulseBg {
+            0% { filter: contrast(1); }
+            100% { filter: contrast(1.1) brightness(1.05); }
+        }
+
+        .slides-wrapper {
+            display: flex;
+            width: 800vw;
+            height: 100vh;
+            transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1);
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .content-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 40px;
+            width: 90%;
+            max-width: 1200px;
+            min-height: 80vh;
+            display: flex;
+            padding: 60px;
+            gap: 50px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visual-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .info-area {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .label {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: var(--text);
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            background: rgba(0,0,0,0.03);
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            color: var(--text);
+        }
+
+        .check-item:hover {
+            background: rgba(255, 71, 87, 0.05);
+            transform: translateX(10px);
+        }
+
+        .check-item i {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .code-box {
+            font-family: 'JetBrains Mono', monospace;
+            background: #2f3542;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid var(--accent);
+            font-size: 0.9rem;
+            color: #70a1ff;
+            width: 100%;
+            margin-top: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 18px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: #f1f2f6;
+            color: var(--text);
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        .tag-pill {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .icon-circle {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 71, 87, 0.2) 0%, transparent 70%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 6rem;
+            filter: drop-shadow(0 0 10px rgba(255, 71, 87, 0.3));
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .nav-controls {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            background: rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.1);
+            color: var(--text);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .progress-indicator {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--primary);
+            width: 30px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mesh-gradient"></div>
+
+    <div class="slides-wrapper" id="slider">
+        
+        <section class="slide">
+            <div class="content-card">
+                <div class="info-area">
+                    <div class="label">Proyecto Vecatsof</div>
+                    <h1>Crónica de una<br>Evolución<br>Técnica</h1>
+                    <p>Documentación paso a paso de la transformación del sistema de registro a una plataforma de encuestas anónima basada en la nube.</p>
+                    <div class="check-item"><i>→</i> <span>Rediseño UX para máxima conversión</span></div>
+                    <div class="check-item"><i>→</i> <span>Arquitectura Cloud: Supabase + Node</span></div>
+                    <div class="check-item"><i>→</i> <span>Optimización de Datos (JSON)</span></div>
+                </div>
+                <div class="visual-area">
+                    <div class="icon-circle">🚀</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="content-card">
+                <div class="info-area">
+                    <div class="label">Paso 1: Cambio de Rumbo</div>
+                    <h2>Acceso Libre 100%</h2>
+                    <p>Cambiamos la estrategia: el usuario ya no tiene que registrarse para participar. La prioridad es el Test.</p>
+                    <div class="check-item"><i>✔</i> <span>Eliminamos Login/Sign In obligatorio</span></div>
+                    <div class="check-item"><i>✔</i> <span>Fluidez inmediata: Inicio → Test → Perfil</span></div>
+                    <div class="check-item"><i>✔</i> <span>Feedback opcional mediante sugerencias</span></div>
+                </div>
+                <div class="visual-area" style="gap: 20px;">
+                    <div style="background: rgba(0,0,0,0.05); padding: 20px; border-radius: 20px; text-decoration: line-through; opacity: 0.4;">🔒 Login Requerido</div>
+                    <div style="font-size: 2rem; color: var(--primary);">⬇</div>
+                    <div style="background: linear-gradient(90deg, #57606f 0%, #2f3542 100%); padding: 20px; border-radius: 20px; color: #fff; font-weight: bold; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">🔓 Acceso Libre Instantáneo</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="content-card">
+                <div class="info-area" style="flex: 2;">
+                    <div class="label">Evolución del Stack</div>
+                    <h2>Antes vs Después</h2>
+                    <p>Resumen técnico de la transformación de la infraestructura de Vecatsof.</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Característica</th>
+                                <th>Estado Anterior</th>
+                                <th>Estado Actual (v2.0)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Base de Datos</td>
+                                <td><span class="tag-pill" style="background:#dfe4ea;">SQLite (Archivo local)</span></td>
+                                <td><span class="tag-pill" style="background:#2ed573; color:white;">PostgreSQL (Supabase Cloud)</span></td>
+                            </tr>
+                            <tr>
+                                <td>Disponibilidad</td>
+                                <td>Limitada al entorno local</td>
+                                <td><span class="tag-pill" style="background:#1e90ff; color:white;">Global desde la Nube</span></td>
+                            </tr>
+                            <tr>
+                                <td>Encuesta</td>
+                                <td>Estática (2 opciones)</td>
+                                <td><span class="tag-pill" style="background:#ffa502; color:white;">Dinámica (3+ opciones JSON)</span></td>
+                            </tr>
+                            <tr>
+                                <td>Analítica</td>
+                                <td>Básica</td>
+                                <td><span class="tag-pill" style="background:#ff4757; color:white;">Estadística Global en Tiempo Real</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="content-card">
+                <div class="info-area">
+                    <div class="label">Paso 2: Resolución</div>
+                    <h2>Archivos Estáticos</h2>
+                    <p>Resolvimos el problema donde el navegador no mostraba los cambios debido a que el servidor apuntaba a la carpeta de compilación antigua.</p>
+                    <div class="check-item" style="color: #ff4757;"><i>✘</i> <span>ERROR: Servidor sirviendo desde /dist</span></div>
+                    <div class="code-box">
+                        // SOLUCIÓN: Servir desde el directorio raíz<br>
+                        app.use(express.static(path.join(__dirname)));
+                    </div>
+                </div>
+                <div class="visual-area">
+                    <div class="icon-circle" style="background: radial-gradient(circle, rgba(46, 134, 222, 0.2) 0%, transparent 70%); filter: drop-shadow(0 0 10px rgba(46, 134, 222, 0.3));">⚙️</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="content-card">
+                <div class="info-area">
+                    <div class="label">Paso 3: Estructura</div>
+                    <h2>Matriz de Respuestas</h2>
+                    <p>Implementamos un esquema basado en JSON para soportar 3 opciones y puntuación de 3 perfiles de personalidad distintos.</p>
+                    <div class="check-item"><i>✓</i> <span>Esquema dinámico en DB</span></div>
+                    <div class="check-item"><i>✓</i> <span>Cálculo automático de porcentajes</span></div>
+                    <div class="check-item"><i>✓</i> <span>8 preguntas temáticas de Colores</span></div>
+                </div>
+                <div class="visual-area">
+                    <div class="code-box" style="color: #ffa502; background: #fff; border: 1px solid #ddd; box-shadow: none;">
+                        <span style="color: #666;">// Ejemplo de Datos JSON</span><br>
+                        {<br>
+                          "options": ["Energía", "Creativo", "Sereno"],<br>
+                          "votes": [10, 45, 23]<br>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="content-card">
+                <div class="info-area">
+                    <div class="label">Paso 4: Backend Cloud</div>
+                    <h2>Desafío Supabase</h2>
+                    <p>Superamos los errores de autenticación causados por caracteres especiales en las credenciales de la conexión a la nube.</p>
+                    <div class="check-item" style="color: #ff4757;"><i>✘</i> <span>ERROR: Auth failed (& and ] chars)</span></div>
+                    <div class="code-box">
+                        // FIX: encodeURIComponent() en .env<br>
+                        DATABASE_URL=...Cati%26sofia20@...
+                    </div>
+                </div>
+                <div class="visual-area">
+                    <div class="icon-circle" style="background: radial-gradient(circle, rgba(10, 189, 227, 0.2) 0%, transparent 70%);">☁️</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="content-card">
+                <div class="info-area">
+                    <div class="label">Paso 5: Frontend</div>
+                    <h2>Fijando Resultados</h2>
+                    <p>Corregimos el error de lógica que ocultaba las estadísticas al terminar el test debido a una mala jerarquía de clases CSS.</p>
+                    <div class="code-box" style="color: var(--primary); background: #fff; border: 1px solid #ddd; box-shadow: none;">
+                        <span style="color: #666;">// Corrección de visibilidad</span><br>
+                        personalityResultSection.classList.add('hidden');<br>
+                        detailedResultsSection.classList.remove('hidden');
+                    </div>
+                </div>
+                <div class="visual-area">
+                    <div class="icon-circle" style="background: radial-gradient(circle, rgba(29, 209, 161, 0.2) 0%, transparent 70%);">📊</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="content-card" style="text-align: center; justify-content: center; background: linear-gradient(135deg, #ffffff 0%, #f1f2f6 100%);">
+                <div class="info-area" style="align-items: center;">
+                    <div class="label">Estado del Proyecto</div>
+                    <h2>Vecatsof v2.0 Finalizado</h2>
+                    <p>Sistema robusto, conectividad cloud escalable y experiencia de usuario optimizada.</p>
+                    <div style="display: flex; gap: 15px; margin-top: 30px;">
+                        <span class="label" style="background: #2f3542;">Node.js</span>
+                        <span class="label" style="background: #747d8c;">Supabase</span>
+                        <span class="label" style="background: #a4b0be;">PostgreSQL</span>
+                    </div>
+                    <h3 style="margin-top: 60px; color: var(--primary); font-size: 2.5rem;">¡Proyecto Entregado!</h3>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="progress-indicator" id="dots"></div>
+
+    <div class="nav-controls">
+        <div class="nav-btn" onclick="moveSlide(-1)">❮</div>
+        <div class="nav-btn" onclick="moveSlide(1)" style="background: var(--primary); color: white;">❯</div>
+    </div>
+
+    <script>
+        let current = 0;
+        const total = 8;
+        const slider = document.getElementById('slider');
+        const dotsContainer = document.getElementById('dots');
+
+        for(let i=0; i<total; i++) {
+            const dot = document.createElement('div');
+            dot.className = i === 0 ? 'dot active' : 'dot';
+            dot.onclick = () => goToSlide(i);
+            dotsContainer.appendChild(dot);
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((d, i) => {
+                d.className = i === current ? 'dot active' : 'dot';
+            });
+        }
+
+        function moveSlide(dir) {
+            current = (current + dir + total) % total;
+            applySlide();
+        }
+
+        function goToSlide(index) {
+            current = index;
+            applySlide();
+        }
+
+        function applySlide() {
+            slider.style.transform = `translateX(-${current * 100}vw)`;
+            updateDots();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'ArrowRight') moveSlide(1);
+            if(e.key === 'ArrowLeft') moveSlide(-1);
+        });
+    </script>
+</body>
+</html>

@@ -1,1 +1,0 @@
-git commit -m "Preparando servidor para Supabase y Render"

@@ -3,63 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vecatsof - Registro de Clientes</title>
+    <title>Vecatsof - Test de Personalidad</title>
+    <meta name="description" content="Test de personalidad interactivo basado en psicología del color. Descubre quién eres.">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="background-animation"></div>
     <div class="container">
-        <header style="text-align: center; margin-bottom: 30px;">
-            <div class="date-badge">VECATSOF DB</div>
-            <h1 style="color: white; font-weight: 800; letter-spacing: -1px;">REGISTRO DE CLIENTES</h1>
-            <p style="color: rgba(255,255,255,0.8);">Completa los pasos para darte de alta en nuestro sistema.</p>
-        </header>
 
-        <main class="glass-card">
-            <!-- Progress Bar -->
-            <div class="progress-container" style="display: flex; justify-content: space-between; margin-bottom: 30px; position: relative;">
-                <div class="step active" id="step-node-1">1</div>
-                <div class="step" id="step-node-2">2</div>
+        <!-- ===== PANTALLA DE BIENVENIDA ===== -->
+        <section id="welcome-section">
+            <header style="text-align: center; margin-bottom: 30px;">
+                <div class="date-badge">PSICOLOGÍA DEL COLOR</div>
+                <h1 style="color: white; font-weight: 800; letter-spacing: -1px;">VECATSOF TEST</h1>
+                <p style="color: rgba(255,255,255,0.8); margin-top: 10px;">¿Qué dice el color sobre tu personalidad?<br>Responde y descúbrelo.</p>
+            </header>
+            <div class="glass-card" style="text-align: center;">
+                <p style="font-size: 1rem; color: #747d8c; margin-bottom: 30px;">Selecciona tus preferencias en una serie de preguntas y averigua qué tipo de alma eres.</p>
+                <button class="submit-btn active" id="start-btn" style="width: 100%; justify-content: center;">
+                    Cargando preguntas... <span class="arrow">→</span>
+                </button>
             </div>
+        </section>
 
-            <form id="registration-form">
-                <!-- Paso 1: Datos Personales -->
-                <section id="step-1" class="form-step">
-                    <h2>Datos Personales</h2>
-                    <div class="input-group">
-                        <input type="text" id="nombre" placeholder="Nombre Completo" required>
-                        <input type="email" id="email" placeholder="Correo Electrónico" required>
-                        <input type="password" id="password" placeholder="Contraseña" required>
-                        <input type="tel" id="telefono" placeholder="Teléfono de contacto">
-                    </div>
-                </section>
+        <!-- ===== CONTENEDOR PRINCIPAL DE ENCUESTA Y RESULTADOS (oculto al inicio) ===== -->
+        <div id="main-container" class="hidden">
+            <header style="text-align: center; margin-bottom: 20px;">
+                <div class="date-badge">PSICOLOGÍA DEL COLOR</div>
+                <h1 style="color: white; font-weight: 800; letter-spacing: -1px;">VECATSOF TEST</h1>
+            </header>
 
-                <!-- Paso 2: Dirección -->
-                <section id="step-2" class="form-step hidden">
-                    <h2>Dirección de Envío</h2>
-                    <div class="input-group">
-                        <input type="text" id="calle" placeholder="Calle y número">
-                        <input type="text" id="ciudad" placeholder="Ciudad">
-                        <input type="text" id="zip" placeholder="Código Postal">
-                        <input type="text" id="provincia" placeholder="Provincia">
-                    </div>
-                </section>
+            <main class="glass-card">
 
-
-                <div class="nav-buttons" style="display: flex; gap: 15px; margin-top: 30px;">
-                    <button type="button" id="prev-btn" class="submit-btn hidden" style="background: rgba(255,255,255,0.1);">Anterior</button>
-                    <button type="button" id="next-btn" class="submit-btn active" style="flex: 1;">Siguiente</button>
-                    <button type="submit" id="submit-reg-btn" class="submit-btn active hidden" style="flex: 1;">Finalizar Registro</button>
+                <!-- Sección de Votación -->
+                <div id="voting-section">
+                    <form id="survey-form">
+                        <div id="survey-questions-container">
+                            <!-- Preguntas cargadas dinámicamente -->
+                        </div>
+                        <button type="button" id="submit-btn" class="submit-btn">
+                            Selecciona una opción
+                        </button>
+                    </form>
                 </div>
-            </form>
 
-            <p style="text-align: center; margin-top: 20px; font-size: 0.9rem;">
-                ¿Ya tienes cuenta? <a href="login.html" style="color: #ff6b81; font-weight: bold; text-decoration: none;">Inicia sesión aquí</a>
-            </p>
-        </main>
+                <!-- Sección de Resultados (oculta) -->
+                <div id="results-section" class="hidden">
+
+                    <!-- Perfil de personalidad -->
+                    <div id="personality-result" style="text-align: center; margin-bottom: 30px;"></div>
+
+                    <!-- Detalles y estadísticas (ocultos hasta hacer clic) -->
+                    <div id="detailed-results-section" class="hidden">
+                        <h3 style="margin-bottom: 20px; color: #ff4757; font-weight: 700; text-align: center;">
+                            📊 Estadísticas de la Comunidad
+                        </h3>
+                        <div id="results-container" class="results-container"></div>
+
+                        <!-- Formulario de Sugerencias -->
+                        <div style="margin-top: 40px; padding-top: 30px; border-top: 2px dashed rgba(0,0,0,0.1);">
+                            <h3 style="color: #ffa502; margin-bottom: 10px; font-size: 1.1rem;">💬 ¿Tienes alguna sugerencia?</h3>
+                            <p style="font-size: 0.85rem; color: #747d8c; margin-bottom: 20px;">Opcional — cuéntanos tu opinión para mejorar el test.</p>
+                            <form id="suggestion-form">
+                                <div class="input-group" style="gap: 12px;">
+                                    <input type="text" id="sug-name" placeholder="Tu nombre (opcional)" style="padding: 12px 16px; border-radius: 12px; border: 2px solid transparent; background: rgba(255,255,255,0.9); font-family: inherit; font-size: 0.95rem; width: 100%; box-sizing: border-box;">
+                                    <textarea id="sug-text" placeholder="Escribe tu sugerencia aquí..." required style="width: 100%; padding: 14px 16px; border-radius: 12px; border: 2px solid transparent; background: rgba(255,255,255,0.9); font-family: inherit; font-size: 0.95rem; resize: vertical; min-height: 90px; box-sizing: border-box;"></textarea>
+                                </div>
+                                <button type="submit" id="suggest-btn" class="submit-btn active" style="width: 100%; margin-top: 15px; background: linear-gradient(135deg, #ffa502 0%, #ff7f50 100%);">
+                                    Enviar sugerencia
+                                </button>
+                            </form>
+                            <div id="suggest-success" class="hidden" style="text-align: center; padding: 20px; color: #2ed573; font-weight: bold; font-size: 1rem;">
+                                ✅ ¡Gracias! Tu sugerencia ha sido enviada.
+                            </div>
+                        </div>
+
+                        <!-- Botón Reiniciar -->
+                        <button type="button" id="reset-btn" class="submit-btn active" style="width: 100%; margin-top: 25px; background: linear-gradient(135deg, #2f3542 0%, #57606f 100%);">
+                            🔄 Reiniciar Test
+                        </button>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+
     </div>
 
-    <script type="module" src="./src/app.ts"></script>
+    <script src="app.js"></script>
 </body>
 </html>
