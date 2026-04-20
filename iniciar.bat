@@ -1,24 +1,35 @@
 @echo off
-title Encuesta VECATSOF
+title Servidor Encuesta Vecatsof
 cls
 echo.
-echo  ========================================
-echo   Iniciando servidor de la encuesta...
-echo  ========================================
+echo  ==============================================
+echo     REINICIANDO SERVIDOR DE LA ENCUESTA
+echo  ==============================================
 echo.
 
-:: Inicia el servidor en segundo plano
-start "" /B node "%~dp0server.js"
+:: Intenta cerrar cualquier instancia previa para liberar el puerto 3000
+taskkill /F /IM node.exe /T >nul 2>&1
 
-:: Espera 2 segundos a que el servidor arranque
-timeout /t 2 /nobreak >nul
+echo [1/3] Iniciando proceso Node.js...
+:: Arranca el servidor en segundo plano pero canalizando la salida a esta ventana
+start /B node "%~dp0server.js"
 
-:: Abre la pagina en el navegador predeterminado
+echo [2/3] Esperando a que el servidor este listo...
+timeout /t 5 /nobreak >nul
+
+echo [3/3] Abriendo navegador predeterminado...
 start "" "http://localhost:3000"
 
-echo  Servidor activo en http://localhost:3000
-echo  Cierra esta ventana para detener el servidor.
 echo.
+echo  ================================================
+echo   ESTADO: ACTIVO en http://localhost:3000
+echo   NOTA: Mantén esta ventana abierta.
+echo   Si ves errores arriba, por favor dímelo.
+echo  ================================================
+echo.
+echo  Presiona cualquier tecla para detener el servidor...
+pause >nul
 
-:: Mantiene el servidor vivo mientras la ventana este abierta
-node "%~dp0server.js"
+:: Al presionar una tecla, matamos el proceso para que el puerto quede libre
+taskkill /F /IM node.exe /T >nul 2>&1
+exit

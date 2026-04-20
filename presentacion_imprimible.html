@@ -258,7 +258,7 @@ userAnswers.forEach(ans => counts[ans]++);
         <div class="content-card">
             <div class="label">PASO 13: AUTOMATIZACIÓN</div>
             <h2>Scripts de Control (VBS)</h2>
-            <p>Uso de archivos Windows Script Host para la automatización del arranque local sin interfaces de consola intrusivas. <b>Para arrancar el proyecto localmente, solo debes ejecutar "iniciar.bat".</b></p>
+            <p>Uso de archivos Windows Script Host para la automatización del arranque local sin interfaces de consola intrusivas. <b>Incluye auto-limpieza de puertos para evitar conflictos de servidor.</b></p>
             <div class="code-box">
                 // iniciar.vbs
                 CreateObject("Wscript.Shell").Run "iniciar.bat", 0, True
