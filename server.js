@@ -99,6 +99,7 @@ async function initDB() {
 
   if (count === 0) {
     console.log('📦 Inicializando preguntas por defecto...');
+    const defaultQuestions = [
       { q: '¿Qué color te atrae más instintivamente?', opts: ['Rojo o Naranja (Energía y Acción)', 'Amarillo o Púrpura (Creatividad e Imaginación)', 'Azul o Verde (Paz y Análisis)'], v: [0, 0, 0] },
       { q: '¿Cómo prefieres pasar tus fines de semana?', opts: ['Explorando nuevos lugares y aventuras', 'Dedicando tiempo a un hobby creativo o arte', 'Disfrutando de la tranquilidad y el silencio'], v: [0, 0, 0] },
       { q: 'Si tu personalidad fuera una estación, ¿cuál sería?', opts: ['Verano (Intenso y brillante)', 'Primavera (Renacimiento y color)', 'Otoño o Invierno (Profundo y reflexivo)'], v: [0, 0, 0] },

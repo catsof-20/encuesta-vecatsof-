@@ -2,7 +2,10 @@
   "name": "encuesta",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
