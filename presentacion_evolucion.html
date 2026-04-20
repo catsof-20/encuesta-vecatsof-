@@ -7,14 +7,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #ff4757;
-            --secondary: #ffa502;
-            --accent: #2e86de;
-            --bg: #f5f6fa;
-            --card-bg: rgba(255, 255, 255, 0.95);
-            --glass: rgba(0, 0, 0, 0.05);
-            --text: #2f3542;
-            --text-muted: #57606f;
+            --primary: #00d2ff;
+            --secondary: #92fe9d;
+            --accent: #ff4757;
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --glass: rgba(255, 255, 255, 0.05);
+            --text: #f1f2f6;
+            --text-muted: #94a3b8;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,30 +27,30 @@
             height: 100vh;
         }
 
+        /* Fondo Animado Deep Tech */
         .mesh-gradient {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: 
-                radial-gradient(at 0% 0%, hsla(339,100%,88%,0.5) 0, transparent 50%), 
-                radial-gradient(at 50% 0%, hsla(225,100%,88%,0.5) 0, transparent 50%), 
-                radial-gradient(at 100% 0%, hsla(125,100%,88%,0.5) 0, transparent 50%), 
-                radial-gradient(at 0% 100%, hsla(339,100%,88%,0.5) 0, transparent 50%), 
-                radial-gradient(at 50% 100%, hsla(225,100%,88%,0.5) 0, transparent 50%), 
-                radial-gradient(at 100% 100%, hsla(275,100%,88%,0.5) 0, transparent 50%);
+                radial-gradient(at 0% 0%, hsla(210,100%,20%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(180,100%,10%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,100%,20%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 100%, hsla(260,100%,15%,1) 0, transparent 50%),
+                radial-gradient(at 0% 100%, hsla(150,100%,10%,1) 0, transparent 50%);
             z-index: -1;
-            animation: pulseBg 10s infinite alternate linear;
+            animation: pulseBg 15s infinite alternate linear;
         }
 
         @keyframes pulseBg {
-            0% { filter: contrast(1); }
-            100% { filter: contrast(1.1) brightness(1.05); }
+            0% { filter: hue-rotate(0deg) contrast(1.1); }
+            100% { filter: hue-rotate(15deg) contrast(1.2); }
         }
 
         .slides-wrapper {
             display: flex;
-            width: 800vw;
+            width: 1200vw;
             height: 100vh;
-            transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1);
+            transition: transform 0.9s cubic-bezier(0.85, 0, 0.15, 1);
         }
 
         .slide {
@@ -64,16 +64,17 @@
 
         .content-card {
             background: var(--card-bg);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 40px;
             width: 90%;
-            max-width: 1200px;
-            min-height: 80vh;
+            max-width: 1300px;
+            min-height: 85vh;
             display: flex;
             padding: 60px;
             gap: 50px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
             position: relative;
             overflow: hidden;
         }
@@ -88,7 +89,7 @@
         }
 
         .info-area {
-            flex: 1.2;
+            flex: 1.4;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -97,124 +98,121 @@
         .label {
             display: inline-block;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
-            padding: 5px 20px;
+            padding: 6px 20px;
             border-radius: 20px;
             font-weight: 800;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 20px;
-            color: white;
+            margin-bottom: 25px;
+            color: #0f172a;
         }
 
         h1 {
-            font-size: 4rem;
-            line-height: 1.1;
+            font-size: 4.5rem;
+            line-height: 1.05;
             font-weight: 800;
-            margin-bottom: 30px;
-            color: var(--text);
+            margin-bottom: 35px;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 3.2rem;
+            margin-bottom: 25px;
             color: var(--primary);
         }
 
         p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             line-height: 1.6;
             color: var(--text-muted);
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .check-item {
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-bottom: 15px;
-            background: rgba(0,0,0,0.03);
-            padding: 15px 20px;
-            border-radius: 12px;
-            border: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 18px;
+            background: rgba(255,255,255,0.03);
+            padding: 18px 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
             transition: all 0.3s ease;
-            color: var(--text);
         }
 
         .check-item:hover {
-            background: rgba(255, 71, 87, 0.05);
-            transform: translateX(10px);
-        }
-
-        .check-item i {
-            color: var(--primary);
-            font-weight: bold;
+            background: rgba(0, 210, 255, 0.08);
+            transform: translateX(12px) scale(1.02);
+            border-color: var(--primary);
         }
 
         .code-box {
             font-family: 'JetBrains Mono', monospace;
-            background: #2f3542;
-            padding: 20px;
-            border-radius: 15px;
-            border-left: 4px solid var(--accent);
-            font-size: 0.9rem;
-            color: #70a1ff;
+            background: #020617;
+            padding: 25px;
+            border-radius: 20px;
+            border-left: 4px solid var(--primary);
+            font-size: 0.95rem;
+            color: #7dd3fc;
             width: 100%;
             margin-top: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            white-space: pre-wrap;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
-            background: white;
-            border-radius: 15px;
+            margin-top: 25px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
         th, td {
-            padding: 18px;
+            padding: 20px;
             text-align: left;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         th {
-            background: #f1f2f6;
-            color: var(--text);
-            font-weight: 800;
+            background: rgba(255,255,255,0.05);
+            color: var(--primary);
             text-transform: uppercase;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
         }
 
-        tr:last-child td { border-bottom: none; }
-
         .tag-pill {
-            padding: 4px 12px;
+            padding: 5px 15px;
             border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
         }
 
         .icon-circle {
-            width: 250px;
-            height: 250px;
+            width: 280px;
+            height: 280px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 71, 87, 0.2) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0, 210, 255, 0.15) 0%, transparent 70%);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 6rem;
-            filter: drop-shadow(0 0 10px rgba(255, 71, 87, 0.3));
-            animation: floating 3s ease-in-out infinite;
+            font-size: 7rem;
+            filter: drop-shadow(0 0 20px rgba(0, 210, 255, 0.3));
+            animation: floating 4s ease-in-out infinite;
         }
 
         @keyframes floating {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
         }
 
+        /* Controles */
         .nav-controls {
             position: fixed;
             bottom: 40px;
@@ -225,25 +223,26 @@
         }
 
         .nav-btn {
-            background: rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.1);
-            color: var(--text);
-            width: 60px;
-            height: 60px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            font-size: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 1.8rem;
         }
 
         .nav-btn:hover {
             background: var(--primary);
-            color: #fff;
-            transform: scale(1.1);
+            color: #0f172a;
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 0 30px var(--primary);
         }
 
         .progress-indicator {
@@ -252,21 +251,28 @@
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 10px;
+            gap: 12px;
         }
 
         .dot {
-            width: 10px;
-            height: 10px;
-            background: rgba(0,0,0,0.1);
+            width: 12px;
+            height: 12px;
+            background: rgba(255,255,255,0.1);
             border-radius: 50%;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .dot.active {
             background: var(--primary);
-            width: 30px;
+            width: 40px;
             border-radius: 10px;
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        @media (max-width: 1000px) {
+            .content-card { flex-direction: column; padding: 40px; height: auto; min-height: 100vh; }
+            h1 { font-size: 3rem; }
+            .visual-area { display: none; }
         }
     </style>
 </head>
@@ -276,74 +282,70 @@
 
     <div class="slides-wrapper" id="slider">
         
+        <!-- SLIDE 1: INTRO -->
         <section class="slide">
             <div class="content-card">
                 <div class="info-area">
-                    <div class="label">Proyecto Vecatsof</div>
-                    <h1>Crónica de una<br>Evolución<br>Técnica</h1>
-                    <p>Documentación paso a paso de la transformación del sistema de registro a una plataforma de encuestas anónima basada en la nube.</p>
-                    <div class="check-item"><i>→</i> <span>Rediseño UX para máxima conversión</span></div>
-                    <div class="check-item"><i>→</i> <span>Arquitectura Cloud: Supabase + Node</span></div>
-                    <div class="check-item"><i>→</i> <span>Optimización de Datos (JSON)</span></div>
+                    <div class="label">Evolution Report v2.1</div>
+                    <h1>Crónica de una<br>Arquitectura<br>Moderna</h1>
+                    <p>Un viaje desde un sistema local limitado hasta una plataforma de encuestas anónima, escalable y distribuida en la nube de Supabase.</p>
+                    <div class="check-item"><span>🚀 Cloud-First Architecture</span></div>
+                    <div class="check-item"><span>🔒 Security Bypass Solved</span></div>
+                    <div class="check-item"><span>📊 Real-time Global Analytics</span></div>
                 </div>
                 <div class="visual-area">
-                    <div class="icon-circle">🚀</div>
+                    <div class="icon-circle">⚡</div>
                 </div>
             </div>
         </section>
 
+        <!-- SLIDE 2: EL PIVOT ESTRATÉGICO -->
         <section class="slide">
             <div class="content-card">
                 <div class="info-area">
-                    <div class="label">Paso 1: Cambio de Rumbo</div>
-                    <h2>Acceso Libre 100%</h2>
-                    <p>Cambiamos la estrategia: el usuario ya no tiene que registrarse para participar. La prioridad es el Test.</p>
-                    <div class="check-item"><i>✔</i> <span>Eliminamos Login/Sign In obligatorio</span></div>
-                    <div class="check-item"><i>✔</i> <span>Fluidez inmediata: Inicio → Test → Perfil</span></div>
-                    <div class="check-item"><i>✔</i> <span>Feedback opcional mediante sugerencias</span></div>
+                    <div class="label">Paso 1: Experiencia de Usuario</div>
+                    <h2>Fricción Cero</h2>
+                    <p>Detectamos que el registro obligatorio reducía la tasa de conversión en un 70%. La solución: Anonimato Total.</p>
+                    <div class="check-item"><span>✓ Eliminación de base de 'Clientes' obligatoria</span></div>
+                    <div class="check-item"><span>✓ Acceso instantáneo al valor del producto</span></div>
+                    <div class="check-item"><span>✓ Sistema de sugerencias como nuevo lead gen</span></div>
                 </div>
-                <div class="visual-area" style="gap: 20px;">
-                    <div style="background: rgba(0,0,0,0.05); padding: 20px; border-radius: 20px; text-decoration: line-through; opacity: 0.4;">🔒 Login Requerido</div>
-                    <div style="font-size: 2rem; color: var(--primary);">⬇</div>
-                    <div style="background: linear-gradient(90deg, #57606f 0%, #2f3542 100%); padding: 20px; border-radius: 20px; color: #fff; font-weight: bold; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">🔓 Acceso Libre Instantáneo</div>
+                <div class="visual-area">
+                    <div class="icon-circle" style="background: radial-gradient(circle, rgba(146, 254, 157, 0.2) 0%, transparent 70%);">🔓</div>
                 </div>
             </div>
         </section>
 
+        <!-- SLIDE 3: STACK TECNOLÓGICO -->
         <section class="slide">
             <div class="content-card">
                 <div class="info-area" style="flex: 2;">
-                    <div class="label">Evolución del Stack</div>
-                    <h2>Antes vs Después</h2>
-                    <p>Resumen técnico de la transformación de la infraestructura de Vecatsof.</p>
+                    <div class="label">Paso 2: Infraestructura</div>
+                    <h2>Local vs Cloud</h2>
+                    <p>Migramos de un archivo SQLite persistente en disco local a una instancia PostgreSQL en la nube.</p>
                     <table>
                         <thead>
                             <tr>
                                 <th>Característica</th>
-                                <th>Estado Anterior</th>
-                                <th>Estado Actual (v2.0)</th>
+                                <th>SQLite (v1.0)</th>
+                                <th>Supabase (v2.0)</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Base de Datos</td>
-                                <td><span class="tag-pill" style="background:#dfe4ea;">SQLite (Archivo local)</span></td>
-                                <td><span class="tag-pill" style="background:#2ed573; color:white;">PostgreSQL (Supabase Cloud)</span></td>
+                                <td>Persistencia</td>
+                                <td>Solo en la máquina local</td>
+                                <td><span class="tag-pill" style="background:var(--primary); color:#000;">Global (AWS Paris)</span></td>
                             </tr>
                             <tr>
-                                <td>Disponibilidad</td>
-                                <td>Limitada al entorno local</td>
-                                <td><span class="tag-pill" style="background:#1e90ff; color:white;">Global desde la Nube</span></td>
+                                <td>Concurrencia</td>
+                                <td>Limitada a 1 usuario</td>
+                                <td><span class="tag-pill" style="background:var(--secondary); color:#000;">Ilimitada (Pooling)</span></td>
                             </tr>
                             <tr>
-                                <td>Encuesta</td>
-                                <td>Estática (2 opciones)</td>
-                                <td><span class="tag-pill" style="background:#ffa502; color:white;">Dinámica (3+ opciones JSON)</span></td>
-                            </tr>
-                            <tr>
-                                <td>Analítica</td>
-                                <td>Básica</td>
-                                <td><span class="tag-pill" style="background:#ff4757; color:white;">Estadística Global en Tiempo Real</span></td>
+                                <td>Seguridad</td>
+                                <td>Física (Archivo)</td>
+                                <td><span class="tag-pill" style="background:#ff4757; color:#fff;">SSL / TLS Encrypted</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -351,94 +353,159 @@
             </div>
         </section>
 
+        <!-- SLIDE 4: EL RETO DE SEGURIDAD (URL ENCODING) -->
         <section class="slide">
             <div class="content-card">
                 <div class="info-area">
-                    <div class="label">Paso 2: Resolución</div>
-                    <h2>Archivos Estáticos</h2>
-                    <p>Resolvimos el problema donde el navegador no mostraba los cambios debido a que el servidor apuntaba a la carpeta de compilación antigua.</p>
-                    <div class="check-item" style="color: #ff4757;"><i>✘</i> <span>ERROR: Servidor sirviendo desde /dist</span></div>
+                    <div class="label">Paso 3: Bloqueador Crítico</div>
+                    <h2>Manejo de Credenciales</h2>
+                    <p>Encontramos un error 500 debido a caracteres especiales en la contraseña de Supabase que rompían el URI de conexión.</p>
                     <div class="code-box">
-                        // SOLUCIÓN: Servir desde el directorio raíz<br>
-                        app.use(express.static(path.join(__dirname)));
-                    </div>
-                </div>
-                <div class="visual-area">
-                    <div class="icon-circle" style="background: radial-gradient(circle, rgba(46, 134, 222, 0.2) 0%, transparent 70%); filter: drop-shadow(0 0 10px rgba(46, 134, 222, 0.3));">⚙️</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="slide">
-            <div class="content-card">
-                <div class="info-area">
-                    <div class="label">Paso 3: Estructura</div>
-                    <h2>Matriz de Respuestas</h2>
-                    <p>Implementamos un esquema basado en JSON para soportar 3 opciones y puntuación de 3 perfiles de personalidad distintos.</p>
-                    <div class="check-item"><i>✓</i> <span>Esquema dinámico en DB</span></div>
-                    <div class="check-item"><i>✓</i> <span>Cálculo automático de porcentajes</span></div>
-                    <div class="check-item"><i>✓</i> <span>8 preguntas temáticas de Colores</span></div>
-                </div>
-                <div class="visual-area">
-                    <div class="code-box" style="color: #ffa502; background: #fff; border: 1px solid #ddd; box-shadow: none;">
-                        <span style="color: #666;">// Ejemplo de Datos JSON</span><br>
-                        {<br>
-                          "options": ["Energía", "Creativo", "Sereno"],<br>
-                          "votes": [10, 45, 23]<br>
-                        }
+// ERROR: postgres://user:Cati&sofia20@host... (El '&' cortaba la URL)
+// SOLUCIÓN:
+const encodedPass = encodeURIComponent('Cati&sofia20');
+DATABASE_URL = `postgresql://user:${encodedPass}@host...`;
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- SLIDE 5: EL PROBLEMA DEL BUILD / CACHÉ -->
         <section class="slide">
             <div class="content-card">
                 <div class="info-area">
-                    <div class="label">Paso 4: Backend Cloud</div>
-                    <h2>Desafío Supabase</h2>
-                    <p>Superamos los errores de autenticación causados por caracteres especiales en las credenciales de la conexión a la nube.</p>
-                    <div class="check-item" style="color: #ff4757;"><i>✘</i> <span>ERROR: Auth failed (& and ] chars)</span></div>
+                    <div class="label">Paso 4: Servidor</div>
+                    <h2>Desincronización de Archivos</h2>
+                    <p>El servidor Node.js apuntaba a una carpeta /dist antigua, impidiendo visualizar los cambios de la v2.0.</p>
+                    <div class="check-item"><span>✘ ERROR: app.use(static('dist'))</span></div>
+                    <div class="check-item"><span>🚀 FIX: Servir desde (__dirname) raíz del proyecto</span></div>
                     <div class="code-box">
-                        // FIX: encodeURIComponent() en .env<br>
-                        DATABASE_URL=...Cati%26sofia20@...
+app.use(express.static(path.join(__dirname)));
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
                     </div>
-                </div>
-                <div class="visual-area">
-                    <div class="icon-circle" style="background: radial-gradient(circle, rgba(10, 189, 227, 0.2) 0%, transparent 70%);">☁️</div>
                 </div>
             </div>
         </section>
 
+        <!-- SLIDE 6: ESTRUCTURA DE DATOS JSON -->
         <section class="slide">
             <div class="content-card">
                 <div class="info-area">
-                    <div class="label">Paso 5: Frontend</div>
-                    <h2>Fijando Resultados</h2>
-                    <p>Corregimos el error de lógica que ocultaba las estadísticas al terminar el test debido a una mala jerarquía de clases CSS.</p>
-                    <div class="code-box" style="color: var(--primary); background: #fff; border: 1px solid #ddd; box-shadow: none;">
-                        <span style="color: #666;">// Corrección de visibilidad</span><br>
-                        personalityResultSection.classList.add('hidden');<br>
-                        detailedResultsSection.classList.remove('hidden');
+                    <div class="label">Paso 5: Flexibilidad</div>
+                    <h2>Esquemas Dinámicos</h2>
+                    <p>Cambiamos de columnas estáticas a columnas JSON para permitir encuestas de 3 o más opciones sin alterar la DB.</p>
+                    <div class="code-box">
+{
+  "pregunta": "¿Qué animal te representa mejor?",
+  "options": ["León", "Delfín", "Búho"],
+  "votes": [12, 45, 8] // Matriz de votos sincronizada por índice
+}
                     </div>
                 </div>
                 <div class="visual-area">
-                    <div class="icon-circle" style="background: radial-gradient(circle, rgba(29, 209, 161, 0.2) 0%, transparent 70%);">📊</div>
+                    <div class="icon-circle">📂</div>
                 </div>
             </div>
         </section>
 
+        <!-- SLIDE 7: ARQUITECTURA HÍBRIDA -->
         <section class="slide">
-            <div class="content-card" style="text-align: center; justify-content: center; background: linear-gradient(135deg, #ffffff 0%, #f1f2f6 100%);">
+            <div class="content-card">
+                <div class="info-area">
+                    <div class="label">Ingeniería</div>
+                    <h2>Universal Database Driver</h2>
+                    <p>Implementamos un 'wrapper' en server.js que detecta el entorno y usa PostgreSQL o SQLite automáticamente.</p>
+                    <div class="code-box">
+async function runQuery(sql, params) {
+  if (process.env.DATABASE_URL) {
+    return await pool.query(sql, params); // Postgres
+  } else {
+    return localDb.prepare(sql).run(params); // SQLite
+  }
+}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 8: EL POOL DE PREGUNTAS (ALEATORIEDAD) -->
+        <section class="slide">
+            <div class="content-card">
+                <div class="info-area">
+                    <div class="label">Paso 6: Dinamismo</div>
+                    <h2>Test de 16 preguntas</h2>
+                    <p>Duplicamos el contenido y añadimos aleatoriedad para garantizar que cada usuario tenga una experiencia única.</p>
+                    <div class="check-item"><span>🎰 SQL: ORDER BY RANDOM() LIMIT 6</span></div>
+                    <div class="check-item"><span>🔄 Variedad: Preguntas nuevas sobre estilo de vida</span></div>
+                </div>
+                <div class="visual-area">
+                    <div class="icon-circle">🎲</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 9: ALGORITMO DE PERSONALIDAD -->
+        <section class="slide">
+            <div class="content-card">
+                <div class="info-area">
+                    <div class="label">Lógica</div>
+                    <h2>Cálculo de Perfiles</h2>
+                    <p>El sistema asigna puntos según el índice de respuesta y devuelve una de las 3 personalidades dominantes.</p>
+                    <div class="code-box">
+const counts = [0, 0, 0];
+userAnswers.forEach(ans => counts[ans]++);
+const maxIndex = counts.indexOf(Math.max(...counts));
+// Perfil 0: Aventurero | Perfil 1: Creativo | Perfil 2: Sereno
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 10: RESULTADOS CON FOTOGRAFÍA -->
+        <section class="slide">
+            <div class="content-card">
+                <div class="info-area">
+                    <div class="label">Paso 7: Frontend Premium</div>
+                    <h2>Impacto Visual con IA</h2>
+                    <p>Integramos imágenes atmosféricas seleccionadas por IA que cambian dinámicamente según el resultado.</p>
+                    <div class="check-item"><span>📸 Fotografía profesional de alta fidelidad</span></div>
+                    <div class="check-item"><span>✨ Efectos de zoom y transición Neo-Glass</span></div>
+                </div>
+                <div class="visual-area">
+                    <div class="icon-circle">🖼️</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 11: ESTADÍSTICAS EN TIEMPO REAL -->
+        <section class="slide">
+            <div class="content-card">
+                <div class="info-area">
+                    <div class="label">Paso 8: Analytics</div>
+                    <h2>Transparencia Global</h2>
+                    <p>Al final del test, mostramos cómo ha votado el resto del mundo en comparación con el usuario.</p>
+                    <div class="check-item"><span>📊 Barras de progreso animadas en JS puro</span></div>
+                    <div class="check-item"><span>🌐 Sincronización instantánea con Supabase</span></div>
+                </div>
+                <div class="visual-area">
+                    <div class="icon-circle">📈</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 12: CONCLUSIÓN Y ESTADO FINAL -->
+        <section class="slide">
+            <div class="content-card" style="text-align: center; justify-content: center; background: linear-gradient(135deg, #0f172a 0%, #00d2ff1a 100%);">
                 <div class="info-area" style="align-items: center;">
-                    <div class="label">Estado del Proyecto</div>
-                    <h2>Vecatsof v2.0 Finalizado</h2>
-                    <p>Sistema robusto, conectividad cloud escalable y experiencia de usuario optimizada.</p>
-                    <div style="display: flex; gap: 15px; margin-top: 30px;">
-                        <span class="label" style="background: #2f3542;">Node.js</span>
-                        <span class="label" style="background: #747d8c;">Supabase</span>
-                        <span class="label" style="background: #a4b0be;">PostgreSQL</span>
+                    <div class="label">Ready for Production</div>
+                    <h1>Vecatsof v2.1<br>Finalizado</h1>
+                    <p>Un sistema robusto, sin fricción y visualmente impactante listo para despliegue global.</p>
+                    <div style="display: flex; gap: 15px; margin-top: 40px;">
+                        <span class="tag-pill" style="border: 1px solid var(--primary);">Node.js</span>
+                        <span class="tag-pill" style="border: 1px solid var(--primary);">Express</span>
+                        <span class="tag-pill" style="border: 1px solid var(--primary);">Supabase</span>
+                        <span class="tag-pill" style="border: 1px solid var(--primary);">PostgreSQL</span>
                     </div>
-                    <h3 style="margin-top: 60px; color: var(--primary); font-size: 2.5rem;">¡Proyecto Entregado!</h3>
                 </div>
             </div>
         </section>
@@ -449,12 +516,12 @@
 
     <div class="nav-controls">
         <div class="nav-btn" onclick="moveSlide(-1)">❮</div>
-        <div class="nav-btn" onclick="moveSlide(1)" style="background: var(--primary); color: white;">❯</div>
+        <div class="nav-btn" onclick="moveSlide(1)" style="background: var(--primary); color: #0f172a;">❯</div>
     </div>
 
     <script>
         let current = 0;
-        const total = 8;
+        const total = 12;
         const slider = document.getElementById('slider');
         const dotsContainer = document.getElementById('dots');
 

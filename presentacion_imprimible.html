@@ -3,247 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informe Técnico Vecatsof: Evolución y Problemas Solucionados</title>
+    <title>Informe de Ingeniería Vecatsof: 12 Hitos de una Evolución en la Nube</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #ff4757;
-            --secondary: #ffa502;
-            --accent: #2e86de;
+            --primary: #00d2ff;
+            --secondary: #92fe9d;
+            --accent: #ff4757;
             --bg: #ffffff;
-            --card-bg: #f8f9fa;
-            --text: #2f3542;
-            --text-muted: #57606f;
+            --card-bg: #f8fafc;
+            --text: #0f172a;
+            --text-muted: #475569;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Outfit', sans-serif;
-            background-color: var(--bg);
+            background-color: #fff;
             color: var(--text);
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         .page {
             width: 100%;
             min-height: 100vh;
-            padding: 50px;
+            padding: 40px;
+            page-break-after: always;
             display: flex;
             justify-content: center;
             align-items: center;
-            page-break-after: always;
-            position: relative;
-            background: #fff;
         }
 
         .content-card {
             background: var(--card-bg);
-            border: 1px solid #ddd;
+            border: 1px solid #e2e8f0;
             border-radius: 30px;
             width: 100%;
             max-width: 900px;
-            padding: 45px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 50px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
         }
 
         .label {
             display: inline-block;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
-            padding: 6px 20px;
+            padding: 5px 15px;
             border-radius: 20px;
             font-weight: 800;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-            color: #fff;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
+            letter-spacing: 1.5px;
             margin-bottom: 20px;
-            line-height: 1.1;
-            color: var(--text);
+            color: #0f172a;
         }
 
-        h2 {
-            font-size: 2.3rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
+        h1 { font-size: 3rem; font-weight: 800; margin-bottom: 20px; color: var(--text); }
+        h2 { font-size: 2rem; margin-bottom: 15px; color: #0284c7; }
+        p { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 20px; }
 
-        p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 12px;
-            background: #fff;
-            padding: 12px 18px;
-            border-radius: 12px;
-            border: 1px solid #eee;
-        }
-
-        .feature-item i {
-            color: var(--primary);
-            font-weight: 900;
-        }
-
-        .code-block {
+        .code-box {
             font-family: 'JetBrains Mono', monospace;
-            background: #2f3542;
+            background: #0f172a;
             padding: 20px;
             border-radius: 12px;
-            color: #70a1ff;
-            font-size: 0.9rem;
-            margin-top: 20px;
+            color: #7dd3fc;
+            font-size: 0.85rem;
+            margin: 20px 0;
+            white-space: pre-wrap;
+            border-left: 4px solid var(--primary);
         }
 
         .alert-box {
-            background: #fff5f5;
-            border-left: 4px solid var(--primary);
-            padding: 20px;
-            color: var(--primary);
-            font-weight: 700;
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 15px;
+            font-weight: 600;
+            color: #b91c1c;
+            margin: 15px 0;
             border-radius: 8px;
-            margin-bottom: 20px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            margin: 20px 0;
             background: white;
-            border: 1px solid #ddd;
+            border: 1px solid #e2e8f0;
         }
 
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-            font-size: 0.95rem;
-        }
-
-        th {
-            background: #f1f2f6;
-            color: var(--text);
-            font-weight: 800;
-        }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #e2e8f0; font-size: 0.9rem; }
+        th { background: #f1f5f9; font-weight: 800; }
 
         @media print {
-            body { background: white !important; }
-            .page { padding: 30px !important; }
-            .content-card { 
-                box-shadow: none !important; 
-                border: 1px solid #eee !important;
-                background: white !important;
-            }
-            .code-block { background: #f8f9fa !important; color: #333 !important; border: 1px solid #ddd !important; }
+            .page { padding: 20px !important; }
+            .content-card { border: none !important; box-shadow: none !important; }
+            .code-box { background: #f8fafc !important; color: #1e293b !important; border: 1px solid #cbd5e1 !important; }
         }
     </style>
 </head>
 <body>
 
+    <!-- 1 -->
     <div class="page">
         <div class="content-card">
-            <div class="label">INFORME TÉCNICO V2.0</div>
-            <h1>Vecatsof:<br>Evolución y<br>Resolución</h1>
-            <p>Un análisis detallado de la transformación del proyecto, los desafíos técnicos encontrados y las soluciones implementadas durante el sprint de refactorización.</p>
-            <div class="feature-item"><i>▶</i> <span>Arquitectura Cloud: Node.js + Supabase</span></div>
-            <div class="feature-item"><i>▶</i> <span>Cambio de Modelo: De Registro Local a Encuesta Anónima</span></div>
+            <div class="label">HITOS DE INGENIERÍA</div>
+            <h1>Vecatsof v2.1:<br>Evolución en<br>la Nube</h1>
+            <p>Este informe detalla los 12 pasos técnicos realizados para transformar Vecatsof en una plataforma de encuestas anónima de alto rendimiento distribuida globalmente.</p>
+            <table>
+                <tr><td>Tecnología Base</td><td>Node.js / Express</td></tr>
+                <tr><td>Infraestructura</td><td>Supabase Cloud (PostgreSQL)</td></tr>
+                <tr><td>Estética</td><td>Neo-Glassmorphism</td></tr>
+            </table>
         </div>
     </div>
 
+    <!-- 2 -->
     <div class="page">
         <div class="content-card">
-            <div class="label">COMPARATIVA TÉCNICA</div>
-            <h2>Salto de Calidad</h2>
-            <p>Evolución de la infraestructura y capacidades del sistema tras la refactorización.</p>
+            <div class="label">PASO 1: UX</div>
+            <h2>El Acceso Anónimo</h2>
+            <p>Se eliminó el login obligatorio para reducir la fricción inicial. El registro se transformó en un sistema de sugerencias voluntario.</p>
+            <div class="alert-box">DECISIÓN: Priorizar la participación sobre la recolección forzada de datos.</div>
+        </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="page">
+        <div class="content-card">
+            <div class="label">PASO 2: CLOUD DB</div>
+            <h2>PostgreSQL en Producción</h2>
+            <p>Migración de SQLite local a una base de datos regional distribuida en Supabase para permitir acceso concurrente global.</p>
             <table>
                 <thead>
-                    <tr>
-                        <th>Característica</th>
-                        <th>Antes (v1.0)</th>
-                        <th>Ahora (v2.0)</th>
-                    </tr>
+                    <tr><th>Métrica</th><th>SQLite (Local)</th><th>Supabase (Cloud)</th></tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><strong>Base de Datos</strong></td>
-                        <td>SQLite (Archivo Local)</td>
-                        <td>PostgreSQL (Cloud)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Acceso</strong></td>
-                        <td>Privado / Solo Local</td>
-                        <td>Público / Global</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Test</strong></td>
-                        <td>2 opciones (Estático)</td>
-                        <td>3+ opciones (Dinámico)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Anonimato</strong></td>
-                        <td>Registro Obligatorio</td>
-                        <td>100% Anónimo</td>
-                    </tr>
+                    <tr><td>Ubicación</td><td>Física (PC Local)</td><td>Nube (AWS Paris)</td></tr>
+                    <tr><td>Accesibilidad</td><td>0% (Solo Local)</td><td>100% (URL Pública)</td></tr>
                 </tbody>
             </table>
         </div>
     </div>
 
+    <!-- 4 -->
     <div class="page">
         <div class="content-card">
-            <div class="label">PROBLEMA 1: CACHÉ</div>
-            <h2>El Error del Build</h2>
-            <p>El navegador no reflejaba los cambios debido a que el servidor seguía apuntando a una caché antigua de producción.</p>
-            <div class="alert-box">ERROR: Servidor apuntando a la carpeta /dist (obsoleta).</div>
-            <div class="code-block">
-                app.use(express.static(path.join(__dirname)));
+            <div class="label">PASO 3: SEGURIDAD</div>
+            <h2>Fallo de Autenticación</h2>
+            <p>Resolución del error de conexión causado por caracteres especiales en la contraseña de Supabase mediante codificación URI.</p>
+            <div class="code-box">
+// CORRECCIÓN CLAVE:
+const password = encodeURIComponent('Cati&sofia20');
+// Result: Cati%26sofia20
             </div>
         </div>
     </div>
 
+    <!-- 5 -->
     <div class="page">
         <div class="content-card">
-            <div class="label">PROBLEMA 2: AUTH</div>
-            <h2>Desafío Supabase</h2>
-            <p>Resolución de errores de conexión debidos a caracteres especiales en las credenciales del servidor.</p>
-            <div class="alert-box">ERROR: password authentication failed (caracteres & y ]).</div>
-            <div class="code-block">
-                // FIX: URL Encoding aplicado en .env<br>
-                DATABASE_URL=...Cati%26sofia20@...
+            <div class="label">PASO 4: SERVIDOR</div>
+            <h2>Gestión de Estáticos</h2>
+            <p>Redirección de la ruta de archivos estáticos para evitar que el servidor sirviera versiones obsoletas desde carpetas de build antiguas.</p>
+            <div class="code-box">
+app.use(express.static(path.join(__dirname)));
             </div>
         </div>
     </div>
 
+    <!-- 6 -->
     <div class="page">
         <div class="content-card">
-            <div class="label">PROBLEMA 3: UI BUG</div>
-            <h2>Estadísticas Invisibles</h2>
-            <p>Corrección de error de lógica que ocultaba las estadísticas al terminar el test debido a una mala jerarquía de clases CSS.</p>
-            <div class="alert-box">ERROR: resultsSection.classList.add('hidden') ocultaba stats.</div>
-            <div class="code-block">
-                personalityResultSection.classList.add('hidden');<br>
-                detailedResultsSection.classList.remove('hidden');
+            <div class="label">PASO 5: MIGRACIÓN</div>
+            <h2>Esquema JSON Dinámico</h2>
+            <p>Implementación de columnas tipo JSON en la base de datos para manejar opciones de respuesta y votos de forma escalable.</p>
+            <div class="code-box">
+{
+  "options": ["Opción A", "Opción B", "Opción C"],
+  "votes": [0, 5, 2]
+}
             </div>
         </div>
     </div>
 
+    <!-- 7 -->
     <div class="page">
-        <div class="content-card" style="text-align: center;">
+        <div class="content-card">
+            <div class="label">PASO 6: ARQUITECTURA</div>
+            <h2>Driver Híbrido</h2>
+            <p>Desarrollo de un ejecutor de consultas universal que permite al proyecto funcionar en local o en nube automáticamente.</p>
+            <div class="code-box">
+async function runQuery(sql, params) {
+  return process.env.DATABASE_URL ? 
+         await pool.query(sql, params) : 
+         localDb.prepare(sql).run(params);
+}
+            </div>
+        </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="page">
+        <div class="content-card">
+            <div class="label">PASO 7: DINAMISMO</div>
+            <h2>Escalado de Preguntas</h2>
+            <p>Expansión del catálogo a 16 preguntas técnicas y activación de un selector aleatorio en el backend.</p>
+            <div class="alert-box">SQL: ORDER BY RANDOM() LIMIT 6</div>
+        </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="page">
+        <div class="content-card">
+            <div class="label">PASO 8: ALGORITMO</div>
+            <h2>Cálculo de Perfil</h2>
+            <p>Implementación de lógica en JS para procesar las respuestas y asignar uno de los 3 perfiles de personalidad dominantes.</p>
+            <div class="code-box">
+const counts = [0, 0, 0];
+userAnswers.forEach(ans => counts[ans]++);
+            </div>
+        </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="page">
+        <div class="content-card">
+            <div class="label">PASO 9: UI MODERNA</div>
+            <h2>Resultados Visuales</h2>
+            <p>Integración de fondos fotográficos atmosféricos y efectos de transición para una experiencia de usuario gratificante.</p>
+        </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="page">
+        <div class="content-card">
+            <div class="label">PASO 10: ANALYTICS</div>
+            <h2>Sincronización Global</h2>
+            <p>Visualización de estadísticas globales en tiempo real, permitiendo al usuario comparar su perfil con el resto del mundo.</p>
+        </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="page">
+        <div class="content-card">
             <div class="label">ESTADO FINAL</div>
-            <h1>Vecatsof v2.0<br>Listo</h1>
-            <p>Plataforma robusta, escalable y 100% funcional en la nube de Supabase.</p>
-            <p style="margin-top: 30px; font-weight: 800; color: var(--primary);">ENTREGA TÉCNICA COMPLETADA</p>
+            <h2>Conclusión Técnica</h2>
+            <p>Vecatsof v2.1 ha alcanzado el estado de producción, con un 100% de éxito en la migración a la nube y arquitectura de datos optimizada.</p>
+            <p style="text-align: center; font-weight: 800; color: #0284c7;">INFORME FINALIZADO</p>
         </div>
     </div>
 
